@@ -1,0 +1,108 @@
+﻿@page
+@model MiniShopRazor.Pages.EditProductModel
+
+@{
+	Layout = "DashBoardLayout";
+}
+<div class="overview">
+    <div class="title">
+        <i class="uil uil-tachometer-fast-alt"></i>
+        <span class="text">Adding Product</span>
+    </div>
+
+    <div>
+        <form method="post" asp-page="EditProduct" class="row">
+            <div class="mb-3">
+                <label asp-for="@Model.p.Name" class="form-label">Product Name</label>
+                <input type="text"
+                       asp-for="@Model.p.Name"
+                       value="@Model.p.Name"
+                       class="form-control"
+                       placeholder="" />
+                <span class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.p.Description" class="form-label">Product Description</label>
+                <textarea type="text"
+                          asp-for="@Model.p.Description"
+                          value="@Model.p.Description"
+                          class="form-control"
+                          placeholder=""></textarea>
+                <span  class="text-danger"></span>
+            </div>
+            <div class="mb-3 col-lg-6">
+                <label asp-for="@Model.p.Quantity" class="form-label">Product Quantity</label>
+                <input type="number"
+                       asp-for="@Model.p.Quantity"
+                       value="@Model.p.Quantity"
+                       class="form-control"
+                       placeholder="">
+                <span  class="text-danger"></span>
+            </div>
+            <div class="mb-3 col-lg-6">
+                <label asp-for="@Model.p.Price" class="form-label">Product Price</label>
+                <input type="number"
+                       asp-for="@Model.p.Price"
+                       value="@Model.p.Price"
+                       class="form-control"
+                       placeholder="">
+                <span class="text-danger"></span>
+            </div>
+            <div class="mb-3 col-lg-12 d-flex align-items-center mt-4">
+                <div class="form-check">
+                    @{
+                        if (Model.p.EnableSize)
+                        {
+                            <input class="form-check-input" asp-for="@Model.p.EnableSize" checked type="checkbox" value="true" />
+                            <label class="form-check-label" asp-for="@Model.p.EnableSize"> Enable Product Visible </label>
+                        }
+                        else
+                        {
+                            <input class="form-check-input" asp-for="@Model.p.EnableSize" type="checkbox" value="true" />
+                            <label class="form-check-label" asp-for="@Model.p.EnableSize"> Enable Product Visible </label>
+                        }
+                    }
+                    
+                </div>
+
+
+            </div>
+
+            <div class="mb-3 col-lg-6">
+                <label asp-for="@Model.p.CompanyId" class="form-label">company</label>
+                <select class="form-select "
+                        asp-for="@Model.p.CompanyId">
+                    @{
+                        if (Model.p.CompanyId == 1)
+                        {
+                            <option hidden>Select one</option>
+                            <option selected value="1">adidas</option>
+                            <option value="2">nike</option>
+                        }
+                        else if (Model.p.CompanyId == 2)
+                        {
+                            <option hidden>Select one</option>
+                            <option value="1">adidas</option>
+                            <option selected value="2">nike</option>
+                        }
+                        else
+                        {
+                            <option hidden>Select one</option>
+                            <option value="1">adidas</option>
+                            <option value="2">nike</option>
+                        }
+                    }
+                </select>
+                <span  class="text-danger"></span>
+            </div>
+
+
+            <div class="col-lg-12 d-flex justify-content-center  ">
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+            </div>
+        </form>
+
+    </div>
+</div>
